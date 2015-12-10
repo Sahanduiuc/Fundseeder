@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Acc:
+  = @account.acc_id
+%p
+  %b Date:
+  = @account.date
+%p
+  %b Type name:
+  = @account.type_name
+
+= link_to 'Edit', edit_account_path(@account)
+\|
+= link_to 'Back', accounts_path

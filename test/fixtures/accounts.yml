@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  acc_id: MyString
+  date: 2015-12-11 00:41:11
+  type_name_id: 
+
+two:
+  acc_id: MyString
+  date: 2015-12-11 00:41:11
+  type_name_id: 
