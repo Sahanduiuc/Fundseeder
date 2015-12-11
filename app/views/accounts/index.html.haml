@@ -1,5 +1,5 @@
 %h1 Listing accounts
-
+%p#notice= notice
 %table
   %thead
     %tr
@@ -15,11 +15,11 @@
       %tr
         %td= account.acc_id
         %td= account.date
-        %td= account.type_name
+        %td= account.type_name.try(:name)
         %td= link_to 'Show', account
         %td= link_to 'Edit', edit_account_path(account)
         %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Account', new_account_path
+= link_to 'Upload files', new_account_path
