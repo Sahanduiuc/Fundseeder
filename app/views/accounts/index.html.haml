@@ -1,25 +1,15 @@
 %h1 Listing accounts
 %p#notice= notice
-%table
-  %thead
-    %tr
-      %th Acc
-      %th Date
-      %th Type name
-      %th
-      %th
-      %th
 
-  %tbody
-    - @accounts.each do |account|
-      %tr
-        %td= account.acc_id
-        %td= account.date
-        %td= account.type_name.try(:name)
-        %td= link_to 'Show', account
-        %td= link_to 'Edit', edit_account_path(account)
-        %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }
+- @accounts.joins(:type_name).group_by(&:acc_id).each do |acc_name, values|
+  .acc_id
+    = acc_name
+    - values.group_by(&:date).each do |acc_date, values_by_date|
+      .date
+        = acc_date.strftime('%Y-%m-%d')
+        - values_by_date.each do |acc|
+          .acc_type
+            = acc.type_name.name
 
-%br
 
 = link_to 'Upload files', new_account_path
